@@ -8,12 +8,18 @@ public class Projectile : MonoBehaviour
     [SerializeField] private float _speed = 5f; 
     [SerializeField] private string _myTag = "";
 
+    private float _lifeTime = 5f;
+
+    private void Awake()
+    {
+        Destroy(gameObject, _lifeTime);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponent<Tank>() != null && collision.gameObject.tag != _myTag)
         {
             collision.gameObject.GetComponent<Tank>().TakeDamage(_damage);
-            print(collision.gameObject.GetComponent<Tank>().name);
             Destroy(gameObject);
         }
     }

@@ -279,5 +279,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 3
-  _speed: 3
-  _myTag: Player
+  _speed: 4
+  _myTag: 

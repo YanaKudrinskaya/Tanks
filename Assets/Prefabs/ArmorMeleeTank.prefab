@@ -175,4 +175,5 @@ MonoBehaviour:
   _movementSpeed: 1
   _angleOffset: 90
   _rotationSpeed: 2
+  _points: 60
   _damage: 10

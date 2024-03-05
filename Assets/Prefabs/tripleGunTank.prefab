@@ -176,9 +176,11 @@ MonoBehaviour:
   _movementSpeed: 1
   _angleOffset: 90
   _rotationSpeed: 3
+  _points: 150
   _projectile: {fileID: 8529790273725525721, guid: 9b6af8b340b15724e8fa3c95096f6b96, type: 3}
   _shootPoint: {fileID: 4309628706930074287}
   _reloadTime: 0.5
+  _projectilies: {fileID: 1727650156774769267, guid: 546b6bd408bda1148812f4c8fe14879a, type: 3}
   _distanceToPlayer: 10
 --- !u!1 &5279568692857719234
 GameObject:

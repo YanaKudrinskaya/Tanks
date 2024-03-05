@@ -172,7 +172,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 10
-  _movementSpeed: 2
+  _movementSpeed: 3
   _angleOffset: 90
   _rotationSpeed: 3
+  _points: 20
   _damage: 5

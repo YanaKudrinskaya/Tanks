@@ -5,7 +5,6 @@ using UnityEngine;
 public class RangeTank : ShootableTank
 {
     [SerializeField] private float _distanceToPlayer = 5f;
-    //private float _timer;
     private Transform _target;
 
     protected override void Start()
@@ -27,7 +26,7 @@ public class RangeTank : ShootableTank
         if (_timer <= 0)
         {
             Shoot();
-            //_timer = _reloadTime;
+
         }
         else
         {

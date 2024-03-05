@@ -9,22 +9,28 @@ public abstract class Tank : MonoBehaviour
     [SerializeField] protected float _movementSpeed = 3f;
     [SerializeField] protected float _angleOffset = 90f;
     [SerializeField] protected float _rotationSpeed = 7f;
+    [SerializeField] private int _points = 0;
 
+    protected UI _ui;
     protected Rigidbody2D _rigidbody;
-    private int _currentHealth;
+    protected int _currentHealth;
 
 
     protected virtual void Start()
     {
         _currentHealth = _maxHealth;
         _rigidbody = GetComponent<Rigidbody2D>();
+        _ui = GameObject.FindGameObjectWithTag("UI").GetComponent<UI>();
+
     }
 
-    public void TakeDamage (int damage)
+    public virtual void TakeDamage (int damage)
     {
         _currentHealth -= damage;
         if (_currentHealth <= 0)
         {
+            Stats.Score += _points;
+            _ui.UpdateScoreAndLevel();
             Destroy(gameObject);
         }
     }
