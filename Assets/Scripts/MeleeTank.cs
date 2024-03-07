@@ -13,14 +13,8 @@ public class MeleeTank : Tank
     protected override void Start()
     {
         base.Start();
-        //if(GameObject.FindGameObjectWithTag("Player") == true)
-            _target = GameObject.FindGameObjectWithTag("Player").transform;
-        //else
-            //_target = null;
-    }
-    protected override void Move()
-    {
-        transform.Translate(Vector2.down * _movementSpeed * Time.deltaTime);
+        _target = FindObjectOfType<Player>().transform;
+
     }
 
     private void OnCollisionStay2D(Collision2D collision)

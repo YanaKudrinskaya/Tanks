@@ -4,19 +4,23 @@ using UnityEngine;
 
 public abstract class ShootableTank : Tank, IShootable
 {
-    [SerializeField] private GameObject _projectile;
+    [Header("Стрельба")]
+    [SerializeField] private string _projectileTag;
     [SerializeField] private Transform _shootPoint;
     [SerializeField] protected float _reloadTime = 0.5f;
-    [SerializeField] private Transform _projectilies;
-    protected float _timer;
-    public bool Player { get; protected set; } = false;
 
+    protected float _timer;
+    private ObjectPooler _objectPooler;
+
+    protected override void Start()
+    {
+        base.Start();
+        _objectPooler = ObjectPooler.Instance;
+    }
+   
     public void Shoot()
     {
-        if (Player)
-            Instantiate(_projectile, _shootPoint.position, transform.rotation, _projectilies.transform);
-        else
-            Instantiate(_projectile, _shootPoint.position, transform.rotation);
+        _objectPooler.SpawnFromPool(_projectileTag, _shootPoint.position, transform.rotation);
         _timer = _reloadTime;
     }
 }

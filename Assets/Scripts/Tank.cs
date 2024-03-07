@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))] //атрибут дл€ проверки наличи€ компонента, защита от удалени€ и автоматического добавлени€
 public abstract class Tank : MonoBehaviour
 {
-    [SerializeField] private int _maxHealth = 30;
-    [SerializeField] protected float _movementSpeed = 3f;
+    [Header("ќбщие характеристики")]
+    [SerializeField][Tooltip("ћаксимальное здоровье")] private int _maxHealth = 30;
+    [SerializeField][Range(0f, 5f)] protected float _movementSpeed = 3f;
     [SerializeField] protected float _angleOffset = 90f;
     [SerializeField] protected float _rotationSpeed = 7f;
+    [Space(10)]
     [SerializeField] private int _points = 0;
 
     protected UI _ui;
@@ -31,11 +34,15 @@ public abstract class Tank : MonoBehaviour
         {
             Stats.Score += _points;
             _ui.UpdateScoreAndLevel();
-            Destroy(gameObject);
+            _currentHealth = _maxHealth;
+            gameObject.SetActive(false);
         }
     }
 
-    protected abstract void Move();
+    protected virtual void Move()
+    {
+        transform.Translate(Vector2.down * _movementSpeed * Time.deltaTime);
+    }
 
     protected void SetAngle(Vector3 target)
     {

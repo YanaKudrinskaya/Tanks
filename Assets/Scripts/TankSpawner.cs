@@ -7,16 +7,15 @@ using Random = UnityEngine.Random;
 
 public class TankSpawner : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> _tanks;
+    [SerializeField] private List<string> _tags;
     [SerializeField] private List<Transform> _spawnPoints;
     [SerializeField] private float spawnTime = 4f;
 
-    private GameObject _player;
-
+    private ObjectPooler _objectPooler;
     private void Start()
     {
-
-            StartCoroutine(SpawnTank());
+        _objectPooler = ObjectPooler.Instance;
+        StartCoroutine(SpawnTank());
     }
 
     IEnumerator SpawnTank()
@@ -25,11 +24,11 @@ public class TankSpawner : MonoBehaviour
         {
             int limit;
             
-            if (Stats.Level < _tanks.Count)
+            if (Stats.Level < _tags.Count)
                 limit = Stats.Level;
             else 
-                limit = _tanks.Count;
-            Instantiate(_tanks[Random.Range(0, limit)], _spawnPoints[Random.Range(0, _spawnPoints.Count)].position, Quaternion.identity);
+                limit = _tags.Count;
+            _objectPooler.SpawnFromPool(_tags[Random.Range(0, limit)], _spawnPoints[Random.Range(0, _spawnPoints.Count)].position, Quaternion.identity);
             yield return new WaitForSeconds(spawnTime);
         }
     }

@@ -281,4 +281,3 @@ MonoBehaviour:
   _damage: 5
   _speed: 5
   _myTag: 
-  _parent: {fileID: 1558642517469058222, guid: 8414399bb2fd8ee47902a30fbc96c368, type: 3}

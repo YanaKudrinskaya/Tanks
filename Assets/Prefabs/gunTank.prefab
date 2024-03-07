@@ -262,10 +262,9 @@ MonoBehaviour:
   _angleOffset: 90
   _rotationSpeed: 7
   _points: 30
-  _projectile: {fileID: 8529790273725525721, guid: fbf70a9740c20754ea81529fd63b68bf, type: 3}
+  _projectileTag: Red Projectile
   _shootPoint: {fileID: 8001179168643296757}
   _reloadTime: 2
-  _projectilies: {fileID: 6673666601808316352, guid: 0934c1768e5102a4e87f6f75e784289a, type: 3}
   _distanceToPlayer: 5
 --- !u!1 &9033298424317168010
 GameObject:

@@ -9,13 +9,6 @@ public class Player : ShootableTank
 {
     private bool _youDead = false;
 
-
-    protected override void Start()
-    {
-        base.Start();
-        Player = true;
-    }
-
     public override void TakeDamage(int damage)
     {
         _currentHealth -= damage;
@@ -55,14 +48,11 @@ public class Player : ShootableTank
 
     private void Victory()
     {
-        //status = Status.NextLevel;
         var m_Tanks = FindObjectsOfType<Tank>();
         foreach (Tank tank in m_Tanks)
         {
-            if (tank.tag != "Player")
-            Destroy(tank.gameObject);
+            tank.gameObject.SetActive(false);
         }
-        //Destroy(FindObjectOfType<TankSpawner>().gameObject);
         _ui.UpdateWin();
         Invoke("UploadLevel", 2f);
     }
